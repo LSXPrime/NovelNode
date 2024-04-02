@@ -1,0 +1,114 @@
+﻿<Page
+    x:Class="NovelNode.Views.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:data="clr-namespace:NovelNode.Data"
+    xmlns:local="clr-namespace:NovelNode.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="SettingsPage"
+    d:DataContext="{d:DesignInstance local:SettingsPage,
+    IsDesignTimeCreatable=False}"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+    ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d">
+
+    <!-- Settings Screen -->
+    <Grid Grid.Column="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button Margin="10,10,0,0" Command="{Binding ViewModel.NavigateToCommand}" CommandParameter="Home">
+            <StackPanel Orientation="Horizontal">
+                <ui:SymbolIcon Symbol="ArrowLeft32" FontSize="20" Margin="0,0,5,0" />
+                <TextBlock Text="Back" FontSize="24" />
+            </StackPanel>
+        </Button>
+
+        <!-- Themes -->
+        <TextBlock Grid.Row="1" Margin="15,10,0,0" Text="Theme" FontWeight="Bold" HorizontalAlignment="Left" />
+        <ComboBox Grid.Row="1" ItemsSource="{Binding ViewModel.ThemesValues}" SelectedItem="{Binding ViewModel.CurrentTheme}" VerticalAlignment="Stretch" HorizontalAlignment="Right" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding ViewModel.SwitchThemeCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <!-- Paths & Backend -->
+        <StackPanel Grid.Row="2" Margin="10,20,0,0">
+            <!-- Paths -->
+            <ui:Card Margin="0,0,0,10" >
+                <StackPanel>
+                    <TextBlock Text="Projects Path:" Margin="0,0,0,15" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="80" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" Text="{Binding Source={x:Static data:AppConfig.Instance}, Path=ProjectsPath}" Margin="0,0,10,0" InputScope="FullFilePath"/>
+                        <Button Grid.Column="1" Content="Browse" Command="{Binding ViewModel.ModelsPathBrowse_ClickCommand}" CommandParameter="Path_Projects" HorizontalAlignment="Right"/>
+                    </Grid>
+                </StackPanel>
+            </ui:Card>
+            <!-- Save/Apply Buttons -->
+            <StackPanel Grid.Row="3" Margin="0,25,0,0" HorizontalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
+                    <Button Width="120" Margin="5" Command="{Binding ViewModel.SaveSettingsCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:SymbolIcon Symbol="Save28" Width="16" Height="16" Margin="0,0,5,0" />
+                            <TextBlock>Save</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Width="120" Margin="5" Command="{Binding ViewModel.ResetSettingsCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:SymbolIcon Symbol="Eraser20" Width="16" Height="16" Margin="0,0,5,0" />
+                            <TextBlock>Clear</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <Button Margin="5" Command="{Binding ViewModel.CheckForUpdateCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                    <StackPanel Orientation="Horizontal">
+                        <ui:SymbolIcon Symbol="ArrowDownLeft24" Width="16" Height="16" Margin="0,0,5,0" />
+                        <TextBlock>Check Update</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- About -->
+        <StackPanel Grid.Row="3" Margin="10,20,0,50" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock Margin="10,35,0,0" FontSize="20" FontWeight="Medium" Text="About Novel Node" HorizontalAlignment="Center" />
+            <TextBlock Margin="10,15,0,0" Text="{Binding ViewModel.AppVersion}" HorizontalAlignment="Center" />
+            <StackPanel Orientation="Horizontal" Margin="0,25,0,0" HorizontalAlignment="Center">
+                <ui:Hyperlink VerticalAlignment="Top" NavigateUri="https://github.com/LSXPrime"  >
+                    <StackPanel>
+                        <ui:SymbolIcon Symbol="KeyCommand24" FontSize="52" />
+                        <Label Content="Github" FontWeight="Bold" />
+                    </StackPanel>
+                </ui:Hyperlink>
+                <ui:Hyperlink VerticalAlignment="Top" NavigateUri="https://www.facebook.com/LSXAxeller">
+                    <StackPanel>
+                        <ui:SymbolIcon Symbol="PersonSupport24" FontSize="52" />
+                        <Label Content="Facebook" FontWeight="Bold" />
+                    </StackPanel>
+                </ui:Hyperlink>
+                <ui:Hyperlink VerticalAlignment="Top" NavigateUri="https://lsxprime.github.io/">
+                    <StackPanel>
+                        <ui:SymbolIcon Symbol="Globe32" FontSize="52" />
+                        <Label Content="Portfolio" FontWeight="Bold" />
+                    </StackPanel>
+                </ui:Hyperlink>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
