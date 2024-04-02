@@ -5,6 +5,7 @@
 ## Overview
 
 NOVEL NODE is a visual novel creator tool designed to streamline the creation process for interactive narrative experiences. With an intuitive node-based editor, it empowers developers to craft engaging stories, manage characters, dialogues, scenes, and events effortlessly. NOVEL NODE aims to provide a robust platform for creating visual novels with features tailored for flexibility, efficiency, and seamless integration into game development workflows.
+
 ![License](https://img.shields.io/github/license/LSXPrime/NovelNode) ![Downloads](https://img.shields.io/github/downloads/LSXPrime/NovelNode/total) [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V3WFGD7)
 
 ![](https://github.com/LSXPrime/_resources/blob/main/NovelNode/Screenshot%2001.png)
@@ -38,9 +39,9 @@ NOVEL NODE is a visual novel creator tool designed to streamline the creation pr
 
 To start using NOVEL NODE, first, download and install the .NET 8 Runtime if it's not already installed. Then, simply download the latest version from the releases page. Open it and explore the various node types and features to bring your narrative visions to life effortlessly.
 
-If you appreciate my work or find it useful, you can support me by buying me a coffee: ko-fi.com/lsxprime
+If you appreciate my work or find it useful, you can support me by buying me a coffee: [Ko-fi](https://ko-fi.com/lsxprime)
 
 ## Licence
 
-NOVEL NODE itself is licensed under the [AGPL3](LICENSE.md) licence. Games created using it can follow their own licence.
+NOVEL NODE itself is licensed under the [LGPL](LICENSE.md) licence. Games created using it can follow their own licence.
 
